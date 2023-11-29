@@ -7,6 +7,8 @@ import {styles, theme} from "../theme"
 import {useNavigation} from "@react-navigation/native"
 import LinearGradient from 'react-native-linear-gradient';
 import CastMember from './CastMember';
+import MoviesList from "../components/MoviesList"
+import InternalHeader from '../components/InternalHeader';
 
 var {width,height} = Dimensions.get('window')
 const topMargin = (Platform.OS === 'ios')?"":" mt-3"
@@ -17,6 +19,7 @@ const Movies = () => {
     const navigation = useNavigation();
     const [isLikes,setIsLiked] = useState(false);
     const [cast,setCast] = useState([1,2,3,4,5])
+    const [similarmovies,setSimilarmovies] = useState([1,2,3,4,5])
 
     useEffect(()=>{
 
@@ -25,14 +28,7 @@ const Movies = () => {
   return (
     <ScrollView className="flex-1 bg-neutral-900" contentContainerStyle={{paddingBottom:20}} >
         <View className="w-full">
-            <SafeAreaView className={"absolute z-20 w-full flex-row justify-between items-center px-4"+topMargin}>
-                <TouchableOpacity style={styles.background} className="rounded-xl mx-2 p-1" onPress={()=>navigation.goBack()}>
-                    <ChevronLeftIcon size="28" strokeWidth={2.5} color="white"/>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>setIsLiked(!isLikes)} className="rounded-xl p-1">
-                    <HeartIcon size="35" strokeWidth={2.5} color={isLikes? theme.background:"white"} />
-                </TouchableOpacity>
-            </SafeAreaView>
+            <InternalHeader styleClass={"absolute z-20 w-full flex-row justify-between items-center px-4"+topMargin}/>
             <View>
                 <Image
                     source={require("../assets/dummy.jpg")}
@@ -72,7 +68,9 @@ const Movies = () => {
                     </Text>
             </View>
         </View>
-        <CastMember cast={cast}/>
+        <CastMember navigation={navigation} cast={cast}/>
+        
+        <MoviesList list={similarmovies} hideSeeAll={true} title={"Simillar Movies"}/>
     </ScrollView>
   )
 }

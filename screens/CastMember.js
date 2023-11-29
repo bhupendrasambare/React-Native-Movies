@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
-const CastMember = ({cast}) => {
+const CastMember = ({cast,navigation}) => {
   return (
     <View className="my-6">
         <Text className="text-white text-lg mx-4 mb-5">Top Cast</Text>
@@ -15,6 +15,7 @@ const CastMember = ({cast}) => {
                     return (
                         <TouchableOpacity
                             key={index}
+                            onPress={()=>navigation.push("Person",person)}
                             className="mr-4 items-center"
                         >
                             <View className="overflow-hidden rounded-full h-20 w-20 items-center border border-neutral-500">
