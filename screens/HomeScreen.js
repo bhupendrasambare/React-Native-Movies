@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { SafeAreaView, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import {Bars3BottomLeftIcon, MagnifyingGlass, MagnifyingGlassIcon} from "react-native-heroicons/outline"
 import TrendingMovies from '../components/TrendingMovies';
+import MoviesList from '../components/MoviesList';
 
 
 const HomeScreen = () => {
 
     const[trendingList,setTrendingList] = useState([1,2,3,4]);
+    const[upcommingMoview,setUpcommingMovies] = useState([1,2,3,4]);
+    const[topRatedMoview,setTopRatedMovies] = useState([1,2,3,4]);
 
   return (
     <View className="flex-1 bg-neutral-800">
@@ -27,6 +30,12 @@ const HomeScreen = () => {
         </SafeAreaView>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingBottom:10}}>
             <TrendingMovies data={trendingList}/>
+
+            {/* Adding upcomming movies */}
+            <MoviesList list={upcommingMoview} title={"Upcomming Movies"}/>
+
+            {/* Adding upcomming movies */}
+            <MoviesList list={topRatedMoview} title={"Top Rated Movies"}/>
         </ScrollView>
     </View>
   )
