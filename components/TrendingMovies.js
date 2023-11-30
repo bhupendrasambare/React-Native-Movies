@@ -1,9 +1,10 @@
 import { Image, Text, TouchableWithoutFeedback, View ,Dimensions} from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from "@react-navigation/native"
+import { image500 } from '../apis/moviesdb';
 
 const { width, height } = Dimensions.get('window');
-const TrendingMovies = ({data,item}) => {
+const TrendingMovies = ({data}) => {
 
     const navigation = useNavigation()
 
@@ -12,7 +13,7 @@ const TrendingMovies = ({data,item}) => {
     }
 
   return (
-    <View classname="mb-8">
+    <View className="mb-8">
         <Text className="text-white text-xl mx-4 mb-5">Trending Movies</Text>
 
         <Carousel data={data}
@@ -29,11 +30,12 @@ const TrendingMovies = ({data,item}) => {
 export default TrendingMovies
 
 const MoviewCard = ({item,handelClick})=>{
+
     return (
         <TouchableWithoutFeedback onPress={()=>handelClick(item)}>
             <Image
             className="rounded-3xl"
-            source={require('../assets/dummy.jpg')}
+            source={{uri:image500(item.poster_path)}}
                 style={{
                     width: width*0.6,
                     height: height*0.4
