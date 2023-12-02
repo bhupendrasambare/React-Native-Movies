@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, TouchableWithoutFeedback, View,Dimensions} from 'react-native'
 import { styles } from '../theme'
 import {useNavigation} from "@react-navigation/native"
-import { image342, image500 } from '../apis/moviesdb';
+import { fallbackMoviePoster, image342 } from '../apis/moviesdb';
 
 const { width, height } = Dimensions.get('window');
 const MoviesList = ({title,list, hideSeeAll}) => {
@@ -32,7 +32,7 @@ const MoviesList = ({title,list, hideSeeAll}) => {
                                 onPress={()=>navigation.push("Movie",item)}
                             >
                                 <View className="space-y-1 mr-4">
-                                    <Image source={{uri:image342(item.poster_path)}}
+                                    <Image source={{uri:image342(item.poster_path) || fallbackMoviePoster}}
                                     className="rounded-3xl"
                                     style={{width: width*0.33, height:height*0.22}} />
                                     <Text className="text-neutral-300 ml-1">

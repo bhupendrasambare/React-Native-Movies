@@ -1,21 +1,39 @@
 import { View, Text, SafeAreaView, TextInput, TouchableOpacity, ScrollView, TouchableWithoutFeedback, Image, Dimensions } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { XMarkIcon } from 'react-native-heroicons/outline'
 import { useNavigation } from '@react-navigation/native'
 import Loading from '../components/Loading';
+import { fallbackPersonImage, image500, searchMovies } from '../apis/moviesdb';
+import { useCallback } from 'react';
+import {debounce} from "lodash"
 
 const { width, height } = Dimensions.get('window');
 export default function Search() {
     const navigation = useNavigation()
 
-    const [movies,setMovies] = useState([1,2,4,56,6]);
+    const [movies,setMovies] = useState([]);
     const [loading,setLoading] = useState(false);
     var movieName = "Asphalt: 9 Legends - Racing game for fun"
+    const [searchString,setSearchString] = useState("");
+
+    const handelSearch = async value =>{
+        setLoading(true);
+        if(value.length>3){
+            const data = await searchMovies(value);
+            if(data && data.results.length>0){
+                setMovies(data.results);
+            }
+        }
+        setLoading(false);
+    }
+    const handelTextDebounce = useCallback(debounce(handelSearch,500),[]);
+
 
   return (
     <SafeAreaView className="flex-1 bg-neutral-800">
       <View className="mx-4 mb-3 flex-row justify-between items-center border border-neutral-500 rounded-full">
         <TextInput
+        onChangeText={handelTextDebounce}
             placeholder='Search Movies'
             placeholderTextColor={'lightgray'}
             className="pb-1 pl-6 flex-1 text-base font-semibold text-white tracking-wider"
@@ -50,11 +68,11 @@ export default function Search() {
                                 >
                                     <View className="space-y-2 mb-4">
                                         <Image className="rounded-3xl"
-                                            source={require("../assets/dummy.jpg")}
+                                            source={{uri:image500(item?.poster_path) || fallbackPersonImage}}
                                             style={{width:width*0.44, height: height*0.3}}
                                         ></Image>
                                         <Text className="text-neutral-300 ml-1">
-                                        {movieName.length>20 ? movieName.slice(0,20)+"...":movieName}
+                                        {item.title.length>20 ? item.title.slice(0,20)+"...":item.title}
                                         </Text>
                                     </View>
                                 </TouchableWithoutFeedback>

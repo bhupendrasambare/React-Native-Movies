@@ -1,7 +1,7 @@
 import { Image, Text, TouchableWithoutFeedback, View ,Dimensions} from 'react-native'
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from "@react-navigation/native"
-import { image500 } from '../apis/moviesdb';
+import { fallbackMoviePoster, image500 } from '../apis/moviesdb';
 
 const { width, height } = Dimensions.get('window');
 const TrendingMovies = ({data}) => {
@@ -35,7 +35,7 @@ const MoviewCard = ({item,handelClick})=>{
         <TouchableWithoutFeedback onPress={()=>handelClick(item)}>
             <Image
             className="rounded-3xl"
-            source={{uri:image500(item.poster_path)}}
+            source={{uri:image500(item.poster_path) || fallbackMoviePoster}}
                 style={{
                     width: width*0.6,
                     height: height*0.4
