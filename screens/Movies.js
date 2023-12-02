@@ -10,11 +10,10 @@ import CastMember from './CastMember';
 import MoviesList from "../components/MoviesList"
 import InternalHeader from '../components/InternalHeader';
 import Loading from '../components/Loading';
-import { fetchMovie, fetchMovieCredits,  fetchMovieSimilar,  image500 } from '../apis/moviesdb';
+import { fallbackMoviePoster, fetchMovie, fetchMovieCredits,  fetchMovieSimilar,  image500 } from '../apis/moviesdb';
 
 var {width,height} = Dimensions.get('window')
 const topMargin = (Platform.OS === 'ios')?"":" mt-3"
-
 const Movies = () => {
 
     const {params: item} = useRoute();
@@ -52,7 +51,6 @@ const Movies = () => {
         if(data){
             setSimilarmovies(data.results)
         }
-        console.log(similarmovies)
         setLoading(false)
     }
 
@@ -68,7 +66,7 @@ const Movies = () => {
                     <InternalHeader styleClass={"absolute z-20 w-full flex-row justify-between items-center px-4"+topMargin}/>
                     <View>
                         <Image
-                            source={{uri:image500(details?.poster_path)}}
+                            source={{uri:image500(details?.poster_path) || fallbackMoviePoster}}
                             style={{width, height:height*0.55 }} 
                             />
                             <LinearGradient 

@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import { image185 } from '../apis/moviesdb'
+import { fallbackPersonImage, image185 } from '../apis/moviesdb'
 
 const CastMember = ({cast,navigation}) => {
   return (
@@ -20,10 +20,10 @@ const CastMember = ({cast,navigation}) => {
                             className="mr-4 items-center"
                         >
                             <View className="overflow-hidden rounded-full h-20 w-20 items-center border border-neutral-500 ">
-                                <Image className="rounded-2xl h-24 w-24" source={{uri:image185(person?.profile_path)}}/>
+                                <Image className="rounded-2xl h-24 w-24" source={{uri:image185(person?.profile_path) || fallbackPersonImage}}/>
                             </View>
                             <Text className="text-white text-xs mt-1">
-                                {person?.name}
+                                {(person?.character.length >12) ? person.character.slice(0,12)+"...":person?.character }
                             </Text>
                             <Text className="text-neutral-400 text-xs mt-1">
                                 {person?.original_name}
