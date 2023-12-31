@@ -1,79 +1,84 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+React Native Movies
 
-# Getting Started
+Overview
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+React Native Movies is a mobile application built with React Native that allows users to browse and discover information about movies. It leverages The Movie Database (TMDb) API to fetch movie data and provides a user-friendly interface for users to explore details such as movie posters, cast information, and more.
 
-## Step 1: Start the Metro Server
+Table of Contents
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Installation
+Screenshots
+Features
+Usage
+Contributing
+License
+Screenshots
 
-To start Metro, run the following command from the _root_ of your React Native project:
+<div style="display: flex; justify-content: space-between;">
+  <img src="./images/home.png" alt="Home Screen" width="25%">
+  <img src="./images/movie.png.png" alt="Home Screen" width="25%">
+  <img src="./images/actor.png.png" alt="Home Screen" width="25%">
+  <img src="./images/search.png.png" alt="Home Screen" width="25%">
+</div>
 
-```bash
-# using npm
-npm start
+Installation
 
-# OR using Yarn
-yarn start
-```
+To run React Native Movies locally, follow these steps:
 
-## Step 2: Start your Application
+Clone the repository:
+bash
+Copy code
+git clone https://github.com/bhupendrasambare/React-Native-Movies.git
+Navigate to the project directory:
+bash
+Copy code
+cd React-Native-Movies
+Install dependencies:
+bash
+Copy code
+npm install
+Create a configuration file (config.js) in the root directory and add your TMDb API key:
+javascript
+Copy code
+// config.js
+const config = {
+  apiKey: 'YOUR_TMDB_API_KEY',
+};
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+module.exports = config;
+Replace 'YOUR_TMDB_API_KEY' with your actual API key.
+Start the application:
+bash
+Copy code
+npx react-native run-android
+or
+bash
+Copy code
+npx react-native run-ios
+Ensure you have the required development environment set up for either Android or iOS.
+Usage
 
-### For Android
+Open the React Native Movies app on your emulator or device.
+Browse the home screen to discover popular movies.
+Click on a movie to view detailed information, including the cast.
+Explore cast details to see their filmography.
+Features
 
-```bash
-# using npm
-npm run android
+Browse popular movies.
+View detailed information about movies, including posters and cast.
+Explore cast details and their filmography.
+Responsive design for both Android and iOS.
+Contributing
 
-# OR using Yarn
-yarn android
-```
+If you would like to contribute to React Native Movies, please follow these guidelines:
 
-### For iOS
+Fork the repository.
+Create a new branch for your feature or bug fix: git checkout -b feature-name.
+Make your changes and commit them: git commit -m "Description of changes".
+Push your changes to the new branch: git push origin feature-name.
+Open a pull request with a detailed description of your changes.
+Please adhere to the existing coding style and conventions.
 
-```bash
-# using npm
-npm run ios
+License
 
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is licensed under the MIT License - see the LICENSE file for details.
