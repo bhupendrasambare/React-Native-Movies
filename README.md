@@ -16,9 +16,9 @@ Screenshots
 
 <div style="display: flex; justify-content: space-between;">
   <img src="./images/home.png" alt="Home Screen" width="25%">
-  <img src="./images/movie.png.png" alt="Home Screen" width="25%">
-  <img src="./images/actor.png.png" alt="Home Screen" width="25%">
-  <img src="./images/search.png.png" alt="Home Screen" width="25%">
+  <img src="./images/movie.png" alt="Home Screen" width="25%">
+  <img src="./images/actor.png" alt="Home Screen" width="25%">
+  <img src="./images/search.png" alt="Home Screen" width="25%">
 </div>
 
 Installation
